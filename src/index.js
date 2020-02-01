@@ -10,6 +10,8 @@ import logger from 'redux-logger';
 // Import saga middleware
 import createSagaMiddleware from 'redux-saga';
 
+
+//SAGAS
 // Create the rootSaga generator function
 function* rootSaga() {
 
@@ -18,6 +20,8 @@ function* rootSaga() {
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
 
+
+// REDUCERS
 // Used to store movies returned from the server
 const movies = (state = [], action) => {
     switch (action.type) {
