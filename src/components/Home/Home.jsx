@@ -17,6 +17,8 @@ class Home extends Component {
         return (
             <div>
                 <h1>Home Page</h1>
+                {JSON.stringify(this.props.reduxStore.movies)}
+                {this.props.reduxStore.movies}
             </div>
         )
     }

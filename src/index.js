@@ -10,16 +10,22 @@ import logger from 'redux-logger';
 // Import saga middleware
 import createSagaMiddleware from 'redux-saga';
 import {takeEvery, put} from 'redux-saga/effects'
-
+import axios from 'axios';
 
 //SAGAS
 // Create the rootSaga generator function
+// this is the saga that will watch for actions
 function* rootSaga() {
     yield takeEvery('GET_MOVIES', getMovies);
 }
 
 function* getMovies() {
     console.log(`In 'GET_MOVIES' Saga`);
+    // let response = yield axios.get(`api.giphy.com/v1/gifs/search?api_key=${process.env.GIPHY_API_KEY}&q=burrito`);
+    let response = yield axios.get(`/movies`)
+    //put is the same as dispatch
+    //calls on reducer with the action.type of 'SET_MOVIES'
+    yield put({ type: 'SET_MOVIES', payload: response.data });
 }
 
 // Create sagaMiddleware
