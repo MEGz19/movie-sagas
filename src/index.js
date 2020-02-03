@@ -17,11 +17,19 @@ import axios from 'axios';
 // this is the saga that will watch for actions
 function* rootSaga() {
     yield takeEvery('GET_MOVIES', getMovies);
+    yield takeEvery('SELECT_MOVIE_ID', selectMoviesId);
+}
+
+// Select movie by id
+function* selectMoviesId(action) {
+    console.log(`In 'SELECT_MOVIE_ID' Saga`);
+    let response = yield axios.get(`/movies/${action.payload}`)
+    yield put ({ type: 'SELECT_MOVIE', payload: response.data[0]})
+    
 }
 
 function* getMovies() {
     console.log(`In 'GET_MOVIES' Saga`);
-    // let response = yield axios.get(`api.giphy.com/v1/gifs/search?api_key=${process.env.GIPHY_API_KEY}&q=burrito`);
     let response = yield axios.get(`/movies`)
     // "yield put" is the same as dispatch
     // it calls on reducer with the action.type of 'SET_MOVIES'
@@ -54,18 +62,12 @@ const genres = (state = [], action) => {
 }
 
 // Used to store selected movie by id on Home.jsx
-const currentMovie = (state = [], action) => {
-    state = {
-        id: '',
-        title: '',
-        poster: '',
-        description: ''
-    }
+const currentMovie = (state = 0, action) => {
     switch (action.type) {
-        case 'SELECT_MOVIE':
+        case 'SELECT_MOVIE_ID':
             return action.payload;
         default:
-            return state.id;    
+            return state;    
     }
 }
 

@@ -11,13 +11,14 @@ class Details extends Component {
         return (
             <div>
                 <h1>Details Page</h1>
+                <p>{this.props.reduxStore.movies}</p>
                 {/* <div>{JSON.stringify(this.props.reduxStore.movies)}</div> */}
-                {this.props.reduxStore.movies.map(movie => {
+                {/* {this.props.reduxStore.movies.map(movie => {
                     if (movie.id === this.props.reduxStore.currentMovie) {
                         console.log( 'On details page:', this.props.reduxStore.currentMovie);
                         return <li key={movie.id}>{movie.description}</li>
                     }
-                })}
+                })} */}
             </div>
 
         )

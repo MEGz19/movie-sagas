@@ -9,12 +9,12 @@ class Home extends Component {
     // state = {
     //     id: ''
     // }
-    state = {
-        id: '',
-        title: '',
-        poster: '',
-        description: ''
-    }
+    // state = {
+    //     id: '',
+    //     title: '',
+    //     poster: '',
+    //     description: ''
+    // }
 
 
     //make movies appear on page load
@@ -25,16 +25,17 @@ class Home extends Component {
         })
     }
     
-    handleClick  = () =>  {
+    handleClick  = (id) =>  {
         console.log('in handleClick');
         // select movie by id and send id as payload
         // target movie by id
         this.props.dispatch({
-            type: 'SELECT_MOVIE',
-            payload: this.state.id
+            type: 'SELECT_MOVIE_ID',
+            payload: id
         })
+        
         //on image click, direct user to /details
-        this.props.history.push('/details');
+        this.props.history.push(`/details/${id}`);
     }
     
 
