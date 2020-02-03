@@ -53,6 +53,7 @@ const genres = (state = [], action) => {
     }
 }
 
+// Used to store selected movie by id on Home.jsx
 const currentMovie = (state = [], action) => {
     state = {
         id: '',
