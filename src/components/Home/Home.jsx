@@ -4,6 +4,19 @@ import { connect } from 'react-redux';
 
 
 class Home extends Component {
+
+    // local state:
+    // state = {
+    //     id: ''
+    // }
+    state = {
+        id: '',
+        title: '',
+        poster: '',
+        description: ''
+    }
+
+
     //make movies appear on page load
     componentDidMount() {
         console.log('In componentDidMount')
@@ -14,6 +27,12 @@ class Home extends Component {
     
     handleClick  = () =>  {
         console.log('in handleClick');
+        // select movie by id and send id as payload
+        // target movie by id
+        this.props.dispatch({
+            type: 'SELECT_MOVIE',
+            payload: this.state.id
+        })
         //on image click, direct user to /details
         this.props.history.push('/details');
     }
