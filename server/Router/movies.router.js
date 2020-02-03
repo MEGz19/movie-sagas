@@ -21,7 +21,7 @@ router.get('/', (req, res) => {
 
 //GET requst to movies database to return
 //movies by id
-router.get('/:id', (req, res) => {
+router.get('/details/:id', (req, res) => {
     // return all categories
     console.log(req.params)
     const queryText = `SELECT * FROM "movies" WHERE "id"=$1`;

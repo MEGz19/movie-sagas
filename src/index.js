@@ -23,7 +23,7 @@ function* rootSaga() {
 // Select movie by id
 function* selectMoviesId(action) {
     console.log(`In 'SELECT_MOVIE_ID' Saga`);
-    let response = yield axios.get(`/movies/${action.payload}`)
+    let response = yield axios.get(`/movies/details/${action.payload}`)
     yield put ({ type: 'SELECT_MOVIE', payload: response.data[0]})
     
 }
@@ -64,7 +64,7 @@ const genres = (state = [], action) => {
 // Used to store selected movie by id on Home.jsx
 const currentMovie = (state = 0, action) => {
     switch (action.type) {
-        case 'SELECT_MOVIE_ID':
+        case 'SELECT_MOVIE':
             return action.payload;
         default:
             return state;    

@@ -33,9 +33,9 @@ class Home extends Component {
             type: 'SELECT_MOVIE_ID',
             payload: id
         })
-        
+    
         //on image click, direct user to /details
-        this.props.history.push(`/details/${id}`);
+        this.props.history.push(`/movies/${id}`);
     }
     
 
@@ -47,7 +47,7 @@ class Home extends Component {
                 {/* {JSON.stringify(this.props.reduxStore.movies)} */}
                 {this.props.reduxStore.movies.map(movie => {
                     return <div key={movie.id}>
-                        <a><img src={movie.poster} onClick={this.handleClick}/></a>
+                        <a><img src={movie.poster} onClick={() => this.handleClick(movie.id)}/></a>
                         <p>{movie.title}</p>
                         <p>{movie.description}</p>
                     </div>

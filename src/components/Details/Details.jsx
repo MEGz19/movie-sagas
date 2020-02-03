@@ -11,6 +11,7 @@ class Details extends Component {
         return (
             <div>
                 <h1>Details Page</h1>
+                {JSON.stringify(this.props.reduxStore.movies)}
                 <p>{this.props.reduxStore.movies}</p>
                 {/* <div>{JSON.stringify(this.props.reduxStore.movies)}</div> */}
                 {/* {this.props.reduxStore.movies.map(movie => {
@@ -34,4 +35,4 @@ const mapStateToProps = (reduxStore) => {
         }
     )
 }
-export default connect(mapStateToProps)(Details)
+export default connect(mapStateToProps)(Details);
