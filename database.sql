@@ -55,3 +55,34 @@ VALUES
 ('Science Fiction'),
 ('Space-Opera'),
 ('Superhero');
+
+--Get all movies from "movies"
+SELECT * FROM "movies" ORDER BY "title";
+
+--Create junction table
+CREATE TABLE "movies_genres" (
+	"id" SERIAL PRIMARY KEY,
+	"movies_id" INT REFERENCES "movies",
+	"genres_id" INT REFERENCES "genres"
+
+);
+
+--Insert values into junction table
+INSERT INTO "movies_genres" ("movies_id", "genres_id")
+VALUES (1,1), (1,8), (1,11), (2,8), (2,9), (2,10), (3,1), (3,13), (3,11), (4,2), (4,7), (4,13), (5,6), (5,12), (6,1), (6,11), (6,8), (7,7), (7,13), (7,1), (8, 1), (8,5), (8,11), (9,2), (9,4), (9,11), (10,1), (10,3), (10,11), (10,12), (11,1), (11,12), (11,5), (12,3), (12,6), (12,5), (13,3), (13,5), (13,10), (14,2), (14,4), (14,13);
+
+--Show movies_genres junction table:
+SELECT * FROM "movies_genres";
+
+--Get the title column from movie table, name from genre table, and the
+SELECT "movies".title, "genre".name, "movies_genres".genres_id
+--Need to know which tabel to start with:
+FROM "movies"
+JOIN "movies_genres" ON "movies".id = "movies_genres".movies_id
+JOIN "genres" ON "genres".name = "movies_genres".genres_id;
+
+--Get the name column from person table, the description column from hobby table, and the skill column from the person_hobby table
+
+SELECT "person".name, "hobby".description, "person_hobby".skill
+
+
